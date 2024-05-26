@@ -8,18 +8,31 @@ const categoriesRouter = require('./routes/categories');
 const connectToDatabase = require('./database/connect');
 const cors = require('./middlewares/cors');
 
+const cookieParser = require("cookie-parser");
+
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 connectToDatabase();
 
+const pagesRouter = require("express").Router();
+const { sendIndex } = require("../controllers/auth.js");
+
+pagesRouter.get("/", sendIndex); 
+
+// app.js
+// Импорты и инициализация приложения
+
+
 app.use(
-  cors, 
+  cors,
+  cookieParser(),
   bodyParser.json(),
-  express.static(path.join(__dirname, 'public')),
-  usersRouter, 
-  gamesRouter, 
-  categoriesRouter
+  pagesRouter, // Добавляем роутер для страниц
+  apiRouter,
+  express.static(path.join(__dirname, "public"))
 );
+
+// Запуск приложения
 
 app.listen(PORT);

@@ -40,6 +40,14 @@ const findGameById = async (req, res, next) => {
   }
 };
 
+const checkIsVoteRequest = async (req, res, next) => {
+  // Если в запросе присылают только поле users
+if (Object.keys(req.body).length === 1 && req.body.users) {
+  req.isVoteRequest = true;
+}
+next();
+};
+
 const sendGameById = (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.game));
@@ -147,9 +155,11 @@ const checkIsGameExists = async (req, res, next) => {
   }
 };
 
+
 module.exports = findAllGames;
 module.exports = sendAllGames;
 module.exports = findGameById;
+module.exports = checkIsVoteRequest;
 module.exports = sendGameById;
 module.exports = updateGame;
 module.exports = deleteGame;

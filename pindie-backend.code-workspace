@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../Desktop/pindie-backend/public"
+		},
+		{
+			"path": "../../../Desktop/public/scripts"
+		},
+		{
+			"path": "../../../Desktop/public/styles"
+		},
+		{
+			"path": "../../../Desktop/public/svg"
+		},
+		{
+			"path": "../../../Desktop/public/admin"
+		},
+		{
+			"path": "../../../Desktop/public/fonts"
+		}
+	],
+	"settings": {}
+}

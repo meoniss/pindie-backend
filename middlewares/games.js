@@ -102,7 +102,7 @@ const checkIsCategoryExists = async (req, res, next) => {
 };
 
 const checkEmptyFields = async (req, res, next) => {
-  if (
+  if (req.isVoteRequest)(
     !req.body.title ||
     !req.body.description ||
     !req.body.image ||
@@ -111,8 +111,9 @@ const checkEmptyFields = async (req, res, next) => {
   ) {
     res.setHeader("Content-Type", "application/json");
         res.status(400).send(JSON.stringify({ message: "Заполните все поля" }));
-  } else {
+  // } else {
     next();
+    return;
   }
 };
 
